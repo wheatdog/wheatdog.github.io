@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>String Bulbs</title>
-    <link>http://localhost:1313/</link>
+    <link>http://wheatdog.github.io/</link>
     <description>Recent content on String Bulbs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
     <lastBuildDate>Sat, 31 Oct 2015 16:31:47 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wheatdog.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Alien</title>
-      <link>http://localhost:1313/2015/10/31/alien/</link>
+      <link>http://wheatdog.github.io/2015/10/31/alien/</link>
       <pubDate>Sat, 31 Oct 2015 16:31:47 +0800</pubDate>
       
-      <guid>http://localhost:1313/2015/10/31/alien/</guid>
+      <guid>http://wheatdog.github.io/2015/10/31/alien/</guid>
       <description>
 
 &lt;h1 id=&#34;this-is-an-h1:f5346514c54e4ae7ae47f667fed0bab0&#34;&gt;This is an H1&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/tumblr_static_bugs_wallpapers_298.jpg&#34; alt=&#34;Alt text&#34; title=&#34;Optional title&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://wheatdog.github.io/images/tumblr_static_bugs_wallpapers_298.jpg&#34; alt=&#34;Alt text&#34; title=&#34;Optional title&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;
@@ -37,10 +37,10 @@ print s
     
     <item>
       <title>my post</title>
-      <link>http://localhost:1313/2015/10/31/my-post/</link>
+      <link>http://wheatdog.github.io/2015/10/31/my-post/</link>
       <pubDate>Sat, 31 Oct 2015 16:03:35 +0800</pubDate>
       
-      <guid>http://localhost:1313/2015/10/31/my-post/</guid>
+      <guid>http://wheatdog.github.io/2015/10/31/my-post/</guid>
       <description></description>
     </item>
     
