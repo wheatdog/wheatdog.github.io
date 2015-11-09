@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>String Bulbs</title>
-    <link>http://wheatdog.github.io/</link>
-    <description>Recent content on String Bulbs</description>
+    <title>Wastale on String Bulbs</title>
+    <link>http://wheatdog.github.io/tags/wastale/</link>
+    <description>Recent content in Wastale on String Bulbs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
     <lastBuildDate>Mon, 09 Nov 2015 21:51:17 +0800</lastBuildDate>
-    <atom:link href="http://wheatdog.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wheatdog.github.io/tags/wastale/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Make a professional game</title>

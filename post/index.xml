@@ -7,41 +7,58 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Sat, 31 Oct 2015 16:31:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2015 21:51:17 +0800</lastBuildDate>
     <atom:link href="http://wheatdog.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Alien</title>
-      <link>http://wheatdog.github.io/2015/10/31/alien/</link>
-      <pubDate>Sat, 31 Oct 2015 16:31:47 +0800</pubDate>
+      <title>Make a professional game</title>
+      <link>http://wheatdog.github.io/2015/11/09/make-a-professional-game/</link>
+      <pubDate>Mon, 09 Nov 2015 21:51:17 +0800</pubDate>
       
-      <guid>http://wheatdog.github.io/2015/10/31/alien/</guid>
+      <guid>http://wheatdog.github.io/2015/11/09/make-a-professional-game/</guid>
       <description>
 
-&lt;h1 id=&#34;this-is-an-h1:f5346514c54e4ae7ae47f667fed0bab0&#34;&gt;This is an H1&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;http://mollyrocket.com/casey/about.html&#34;&gt;Casey Muratori&lt;/a&gt; launched a brilliant
+project &lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt; last year. I still remember
+how excited I was when I watched the very first episode of Handmade Hero. After
+following 70 episodes, I start thinking what I could use from what I learned. I
+am not saying I will stop following this project or I have leaned enough from
+it. I just mean that I am the kind of person can learn more by doing. Therefore,
+I decide to make my own game.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://wheatdog.github.io/images/tumblr_static_bugs_wallpapers_298.jpg&#34; alt=&#34;Alt text&#34; title=&#34;Optional title&#34; /&gt;
-&lt;/p&gt;
+&lt;h1 id=&#34;why-now:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;Why now?&lt;/h1&gt;
 
-&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;I am a college student right now. Basicly, I can say this period of time is the
+most free time in my whole life. I can learn whatever I want and do whatever I
+want. One reason why I choose computer science as my college major is my passion
+for indie games. Indie games truely rock my soul. I saw something very unique in
+them. Unlike AAA games, I can feel real &amp;ldquo;connect&amp;rdquo; between players and game
+designers. That definitely is what I want to do in the future.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;Python syntax highlighting&amp;quot;
-print s
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;what-genre-will-this-game-be:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;What genre will this game be?&lt;/h1&gt;
 
-&lt;h2 id=&#34;this-is-an-h2:f5346514c54e4ae7ae47f667fed0bab0&#34;&gt;This is an H2&lt;/h2&gt;
+&lt;p&gt;I love puzzle games like &lt;a href=&#34;http://store.steampowered.com/app/26800/&#34;&gt;braid&lt;/a&gt; and
+roguelike games like
+&lt;a href=&#34;http://store.steampowered.com/app/113200/&#34;&gt;the binding of issac&lt;/a&gt;. As my first
+game, this game might be a 2D roguelike game. When I was a junior high school
+student, I really enjoyed the excitement of fighting huge enemies in Monster
+Hunter but sucked at the feature of collecting materials for forging weapons. In
+this game, I will get rid of the concept of collecting and focus on the weapon
+system and huge enemies. I will talk about them in the later posts.&lt;/p&gt;
 
-&lt;h6 id=&#34;this-is-an-h6:f5346514c54e4ae7ae47f667fed0bab0&#34;&gt;This is an H6&lt;/h6&gt;
+&lt;h1 id=&#34;goal:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;Goal&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Finish this game before I graduate.&lt;/li&gt;
+&lt;li&gt;Ship on Windows and Linux at least since I only have machions with these
+operation systems now.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;keep-going-on:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;Keep going on&lt;/h1&gt;
+
+&lt;p&gt;Actions speak louder than words. Procrastination is the horrible enemy. I will
+post something new about Wastale at least every two weeks. You have my word.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>my post</title>
-      <link>http://wheatdog.github.io/2015/10/31/my-post/</link>
-      <pubDate>Sat, 31 Oct 2015 16:03:35 +0800</pubDate>
-      
-      <guid>http://wheatdog.github.io/2015/10/31/my-post/</guid>
-      <description></description>
     </item>
     
   </channel>
