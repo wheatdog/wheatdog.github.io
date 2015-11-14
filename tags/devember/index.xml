@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devember on String Bulbs</title>
+    <link>http://wheatdog.github.io/tags/devember/</link>
+    <description>Recent content in Devember on String Bulbs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2015</copyright>
+    <lastBuildDate>Sat, 14 Nov 2015 13:40:04 +0800</lastBuildDate>
+    <atom:link href="http://wheatdog.github.io/tags/devember/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The Devember challenge</title>
+      <link>http://wheatdog.github.io/2015/11/14/the-devember-challenge/</link>
+      <pubDate>Sat, 14 Nov 2015 13:40:04 +0800</pubDate>
+      
+      <guid>http://wheatdog.github.io/2015/11/14/the-devember-challenge/</guid>
+      <description>
+
+&lt;p&gt;I, Tim Liou, will participate to the next Devember. My Devember will be
+programming a part of Wastale, a game project. I promise I will program for my
+Devember for at least an hour, every day of the next December. I will also write
+a daily public devlog and will make the produced code publicly available on the
+internet. No matter what, I will keep my promise.&lt;/p&gt;
+
+&lt;p&gt;The content above is the contract of &lt;a href=&#34;http://devember.org/&#34;&gt;Devember&lt;/a&gt;, a really
+interesting challenge in December.&lt;/p&gt;
+
+&lt;h1 id=&#34;detail:68a5841ae5e350aae7d7c051b365f42f&#34;&gt;Detail&lt;/h1&gt;
+
+&lt;p&gt;Wastale is a developing game inspired by
+&lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt;. This game will focus on big, various
+enemies and different kinds of weapons. I hope this game can give players
+hunting excitement but not in mission-based. There are still lots of game design
+decisions need to make. Obviously, I don&amp;rsquo;t have to worry about them now. In
+December, I will first build up the minimum windows platform layer just like
+Handmade Hero did. Then, I will implement some basic stuff for a platformer
+game.&lt;/p&gt;
+
+&lt;h1 id=&#34;goals:68a5841ae5e350aae7d7c051b365f42f&#34;&gt;Goals&lt;/h1&gt;
+
+&lt;p&gt;Therefore, following are my Devember goals.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Basic Windows platform layer&lt;/li&gt;
+&lt;li&gt;World/Map handling&lt;/li&gt;
+&lt;li&gt;Entity handling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;dj-play-the-music:68a5841ae5e350aae7d7c051b365f42f&#34;&gt;DJ! Play the music&lt;/h1&gt;
+
+&lt;p&gt;I really love the idea of Devember. Let&amp;rsquo;s start the party.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
