@@ -7,8 +7,74 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Sat, 14 Nov 2015 13:40:04 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2015 23:17:19 +0800</lastBuildDate>
     <atom:link href="http://wheatdog.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Devember Day 1 - Basic Win32 Layer</title>
+      <link>http://wheatdog.github.io/2015/11/28/devember-day-1---basic-win32-layer/</link>
+      <pubDate>Sat, 28 Nov 2015 23:17:19 +0800</pubDate>
+      
+      <guid>http://wheatdog.github.io/2015/11/28/devember-day-1---basic-win32-layer/</guid>
+      <description>
+
+&lt;p&gt;Last week, I spent some time reviewing the construction of Win32 prototyping
+layer mentioned in Handmade Hero weeks 1 through 5. In those weeks, Casey talk
+about some basic stuff that a game need - Graphic, Sound, and Input. If you are
+interested in detail, I would recommend you to watch
+&lt;a href=&#34;https://hero.handmadedev.org/jace/guide/&#34;&gt;Day 1 to 25 of Handmade Hero&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most codes of &lt;code&gt;win32_wastale.*&lt;/code&gt; are as same as the codes in &lt;code&gt;win32_handmade.*&lt;/code&gt;.
+The most different part is the sound. I will talk about in the rest of the
+article. By the way, the source code of wastale is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;Github&lt;/a&gt; if you want to take a look.
+Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_1&#34;&gt;this tag&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;xaudio2:38d4082b4e2ef27c7672bc7e5af08564&#34;&gt;XAudio2&lt;/h1&gt;
+
+&lt;p&gt;Instead of using DirectSound, I choose XAudio2. There is only one ring buffer in
+DirectSound. When we have reached the end of the buffer, we start from the
+beginning. However, in XAudio2, we can submit several &lt;code&gt;XAUDIO2_BUFFER&lt;/code&gt; through
+&lt;code&gt;IXAudio2SourceVoice::SubmitSourceBuffer&lt;/code&gt; method. Basicly, it is like a queue.
+Each time we reach the end of a buffer, it will start playing the next buffer.&lt;/p&gt;
+
+&lt;p&gt;We can reduce the audio latency by keeping the same number of samples in the
+queue. For example, Red line represent the frame boundary. Let&amp;rsquo;s say that we run
+in 30 frames per second and have 48000 samples per second. Therefore, there are
+1600 samples per frame. Every time we write, we will make sure that the number
+of samples in the audio queue are 2400, that is the number of samples in one and
+a half frames.
+&lt;a href=&#34;https://flic.kr/p/BgS6Lj&#34;&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5697/23152009310_c431845d73_o.png&#34; alt=&#34;&#34; /&gt;
+&lt;/a&gt;
+Brown arrow represent the time that we first write to the sound buffer, and the
+brown rounded rectangle near the black line represent the samples we write. Next
+time we update samples at the time green arrow point to. To keep the number of
+samples in the queue, we will only need to write the number of samples that
+green rounded rectangle stand for. If we can update samples in the audio buffer
+just in the middle of the frame like arrows in the image above. We can generate
+enough samples for next frame and those samples will be played right on the
+frame boundary.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, first we cannot guarantee we always update samples at the same
+time. Therefore, sound boundary may not line up with the frame boudary, which I
+think is fine. Second, &lt;code&gt;IXAudio2SourceVoice::GetState&lt;/code&gt; cannot return the exactly
+samples we just played without using callback. Its granularity is 480 samples in
+my machine. That means that we might fill less sample than what we really need
+to. The worst case is that we will have the gap of 480 samples.&lt;/p&gt;
+
+&lt;p&gt;The easy way to solve this problem is to make the number we want to keep in the
+queue larger. Another solution will be using callback which I am really not
+familiar with. I think the latency right now is fine for a prototyping
+layer. Therefore, I will move on to deal with other problem.&lt;/p&gt;
+
+&lt;h1 id=&#34;tomorrow:38d4082b4e2ef27c7672bc7e5af08564&#34;&gt;Tomorrow&lt;/h1&gt;
+
+&lt;p&gt;I will try to implement &amp;ldquo;Live Code Editing&amp;rdquo; feature Casey talked about in
+Handmade Hero Week 5 tomorrow. Then, maybe start game engine code exploration
+Thursday. Until then!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>The Devember challenge</title>
