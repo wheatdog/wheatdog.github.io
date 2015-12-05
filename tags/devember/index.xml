@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Devember on String Bulbs</title>
-    <link>http://wheatdog.github.io/tags/devember/</link>
+    <link>http://stringbulbs.com/tags/devember/</link>
     <description>Recent content in Devember on String Bulbs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
     <lastBuildDate>Thu, 03 Dec 2015 22:51:19 +0800</lastBuildDate>
-    <atom:link href="http://wheatdog.github.io/tags/devember/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://stringbulbs.com/tags/devember/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Devember Day 3 - Basic MultiPlayer Movement</title>
-      <link>http://wheatdog.github.io/2015/12/03/devember-day-3---basic-multiplayer-movement/</link>
+      <link>http://stringbulbs.com/2015/12/03/devember-day-3---basic-multiplayer-movement/</link>
       <pubDate>Thu, 03 Dec 2015 22:51:19 +0800</pubDate>
       
-      <guid>http://wheatdog.github.io/2015/12/03/devember-day-3---basic-multiplayer-movement/</guid>
+      <guid>http://stringbulbs.com/2015/12/03/devember-day-3---basic-multiplayer-movement/</guid>
       <description>&lt;p&gt;Today&amp;rsquo;s code is on
 &lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_3&#34;&gt;this tag&lt;/a&gt;. The complete
 code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -49,10 +49,10 @@ Now, we have multiplayer.&lt;/p&gt;
     
     <item>
       <title>Devember Day 2 - Live Code Editing</title>
-      <link>http://wheatdog.github.io/2015/12/02/devember-day-2---live-code-editing/</link>
+      <link>http://stringbulbs.com/2015/12/02/devember-day-2---live-code-editing/</link>
       <pubDate>Wed, 02 Dec 2015 22:47:18 +0800</pubDate>
       
-      <guid>http://wheatdog.github.io/2015/12/02/devember-day-2---live-code-editing/</guid>
+      <guid>http://stringbulbs.com/2015/12/02/devember-day-2---live-code-editing/</guid>
       <description>&lt;p&gt;Today&amp;rsquo;s code is on
 &lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_2&#34;&gt;this tag&lt;/a&gt;. The complete
 code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -73,10 +73,10 @@ screen. Tomorrow, I will start doing some game code. Until then.&lt;/p&gt;
     
     <item>
       <title>Devember Day 1 - Basic Win32 Layer</title>
-      <link>http://wheatdog.github.io/2015/12/01/devember-day-1---basic-win32-layer/</link>
+      <link>http://stringbulbs.com/2015/12/01/devember-day-1---basic-win32-layer/</link>
       <pubDate>Tue, 01 Dec 2015 23:17:19 +0800</pubDate>
       
-      <guid>http://wheatdog.github.io/2015/12/01/devember-day-1---basic-win32-layer/</guid>
+      <guid>http://stringbulbs.com/2015/12/01/devember-day-1---basic-win32-layer/</guid>
       <description>
 
 &lt;p&gt;Last week, I spent some time reviewing the construction of Win32 prototyping
@@ -139,10 +139,10 @@ Thursday. Until then!&lt;/p&gt;
     
     <item>
       <title>The Devember challenge</title>
-      <link>http://wheatdog.github.io/2015/11/14/the-devember-challenge/</link>
+      <link>http://stringbulbs.com/2015/11/14/the-devember-challenge/</link>
       <pubDate>Sat, 14 Nov 2015 13:40:04 +0800</pubDate>
       
-      <guid>http://wheatdog.github.io/2015/11/14/the-devember-challenge/</guid>
+      <guid>http://stringbulbs.com/2015/11/14/the-devember-challenge/</guid>
       <description>
 
 &lt;p&gt;I, Tim Liou, will participate to the next Devember. My Devember will be

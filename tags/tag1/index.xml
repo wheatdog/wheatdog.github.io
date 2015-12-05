@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tag1 on String Bulbs</title>
-    <link>http://wheatdog.github.io/tags/tag1/</link>
+    <link>http://stringbulbs.com/tags/tag1/</link>
     <description>Recent content in Tag1 on String Bulbs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
     <lastBuildDate>Sat, 05 Dec 2015 10:57:35 +0800</lastBuildDate>
-    <atom:link href="http://wheatdog.github.io/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://stringbulbs.com/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>devember 4</title>
-      <link>http://wheatdog.github.io/2015/12/05/devember-4/</link>
+      <link>http://stringbulbs.com/2015/12/05/devember-4/</link>
       <pubDate>Sat, 05 Dec 2015 10:57:35 +0800</pubDate>
       
-      <guid>http://wheatdog.github.io/2015/12/05/devember-4/</guid>
+      <guid>http://stringbulbs.com/2015/12/05/devember-4/</guid>
       <description></description>
     </item>
     
