@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wastale on String Bulbs</title>
+    <link>http://stringbulbs.com/tags/wastale/</link>
+    <description>Recent content in Wastale on String Bulbs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2015</copyright>
+    <lastBuildDate>Thu, 03 Dec 2015 22:51:19 +0800</lastBuildDate>
+    <atom:link href="http://stringbulbs.com/tags/wastale/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Devember Day 3 - Basic MultiPlayer Movement</title>
+      <link>http://stringbulbs.com/devember-day-3---basic-multiplayer-movement/</link>
+      <pubDate>Thu, 03 Dec 2015 22:51:19 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/devember-day-3---basic-multiplayer-movement/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_3&#34;&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, Let&amp;rsquo;s draw some rectangle on the screen. You can check out &lt;code&gt;DrawRect&lt;/code&gt;
+function. Be careful that the coordinates of angles in the rectangle might sit
+outside of the screen. This might cause to memory access violation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/Q2K2vRs.gif?1&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Then, it is about physic of motion.
+&lt;img src=&#34;https://latex.codecogs.com/gif.latex?v&amp;amp;space;=&amp;amp;space;v_0&amp;amp;space;&amp;amp;plus;&amp;amp;space;at&#34; alt=&#34;v = v_0 + at&#34; /&gt;
+
+&lt;img src=&#34;https://latex.codecogs.com/gif.latex?x&amp;amp;space;=&amp;amp;space;x_0&amp;amp;space;&amp;amp;plus;&amp;amp;space;v_0t&amp;amp;space;&amp;amp;plus;&amp;amp;space;0.5at&#34; alt=&#34;x = x_0 + v_0t + \frac{1}{2}at&#34; /&gt;
+
+Also, change the unit from pixel to meter. You can feel that motion is much better.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/mOQgHIO.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Each entry of &lt;code&gt;player_info&lt;/code&gt; struct array store the information of each player.
+Now, we have multiplayer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/m7jKV9f.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;See you tomorrow!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Devember Day 2 - Live Code Editing</title>
+      <link>http://stringbulbs.com/devember-day-2---live-code-editing/</link>
+      <pubDate>Wed, 02 Dec 2015 22:47:18 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/devember-day-2---live-code-editing/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_2&#34;&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The most coolest thing I did today is &amp;ldquo;Live Code Editing&amp;rdquo; that Casey mentioned
+in Handmade Hero week 5. The basic idea is to make platform independent code be
+another translation unit, and compile it to a DLL. Then, we can dynamically load
+it in the Win32 platform code. By doing so, we can change our game code without
+reopening the executable file at some point.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/8EWjY6u.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I might implement the &amp;ldquo;Loop editing&amp;rdquo; feature after I got some entities on the
+screen. Tomorrow, I will start doing some game code. Until then.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Devember Day 1 - Basic Win32 Layer</title>
+      <link>http://stringbulbs.com/devember-day-1---basic-win32-layer/</link>
+      <pubDate>Tue, 01 Dec 2015 23:17:19 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/devember-day-1---basic-win32-layer/</guid>
+      <description>
+
+&lt;p&gt;Last week, I spent some time reviewing the construction of Win32 prototyping
+layer mentioned in Handmade Hero weeks 1 through 5. In those weeks, Casey talk
+about some basic stuff that a game need - Graphic, Sound, and Input. If you are
+interested in detail, I would recommend you to watch
+&lt;a href=&#34;https://hero.handmadedev.org/jace/guide/&#34;&gt;Day 1 to 25 of Handmade Hero&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most codes of &lt;code&gt;win32_wastale.*&lt;/code&gt; are as same as the codes in &lt;code&gt;win32_handmade.*&lt;/code&gt;.
+The most different part is the sound. I will talk about in the rest of the
+article. By the way, the source code of wastale is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;Github&lt;/a&gt; if you want to take a look.
+Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_1&#34;&gt;this tag&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;xaudio2:38d4082b4e2ef27c7672bc7e5af08564&#34;&gt;XAudio2&lt;/h1&gt;
+
+&lt;p&gt;Instead of using DirectSound, I choose XAudio2. There is only one ring buffer in
+DirectSound. When we have reached the end of the buffer, we start from the
+beginning. However, in XAudio2, we can submit several &lt;code&gt;XAUDIO2_BUFFER&lt;/code&gt; through
+&lt;code&gt;IXAudio2SourceVoice::SubmitSourceBuffer&lt;/code&gt; method. Basicly, it is like a queue.
+Each time we reach the end of a buffer, it will start playing the next buffer.&lt;/p&gt;
+
+&lt;p&gt;We can reduce the audio latency by keeping the same number of samples in the
+queue. For example, Red line represent the frame boundary. Let&amp;rsquo;s say that we run
+in 30 frames per second and have 48000 samples per second. Therefore, there are
+1600 samples per frame. Every time we write, we will make sure that the number
+of samples in the audio queue are 2400, that is the number of samples in one and
+a half frames.
+&lt;a href=&#34;https://flic.kr/p/BgS6Lj&#34;&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5697/23152009310_c431845d73_o.png&#34; alt=&#34;&#34; /&gt;
+&lt;/a&gt;
+Brown arrow represent the time that we first write to the sound buffer, and the
+brown rounded rectangle near the black line represent the samples we write. Next
+time we update samples at the time green arrow point to. To keep the number of
+samples in the queue, we will only need to write the number of samples that
+green rounded rectangle stand for. If we can update samples in the audio buffer
+just in the middle of the frame like arrows in the image above. We can generate
+enough samples for next frame and those samples will be played right on the
+frame boundary.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, first we cannot guarantee we always update samples at the same
+time. Therefore, sound boundary may not line up with the frame boudary, which I
+think is fine. Second, &lt;code&gt;IXAudio2SourceVoice::GetState&lt;/code&gt; cannot return the exactly
+samples we just played without using callback. Its granularity is 480 samples in
+my machine. That means that we might fill less sample than what we really need
+to. The worst case is that we will have the gap of 480 samples.&lt;/p&gt;
+
+&lt;p&gt;The easy way to solve this problem is to make the number we want to keep in the
+queue larger. Another solution will be using callback which I am really not
+familiar with. I think the latency right now is fine for a prototyping
+layer. Therefore, I will move on to deal with other problem.&lt;/p&gt;
+
+&lt;h1 id=&#34;tomorrow:38d4082b4e2ef27c7672bc7e5af08564&#34;&gt;Tomorrow&lt;/h1&gt;
+
+&lt;p&gt;I will try to implement &amp;ldquo;Live Code Editing&amp;rdquo; feature Casey talked about in
+Handmade Hero Week 5 tomorrow. Then, maybe start game engine code exploration
+Thursday. Until then!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Devember challenge</title>
+      <link>http://stringbulbs.com/post-title/</link>
+      <pubDate>Sat, 14 Nov 2015 13:40:04 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/post-title/</guid>
+      <description>
+
+&lt;p&gt;I, Tim Liou, will participate to the next Devember. My Devember will be
+programming a part of Wastale, a game project. I promise I will program for my
+Devember for at least an hour, every day of the next December. I will also write
+a daily public devlog and will make the produced code publicly available on the
+internet. No matter what, I will keep my promise.&lt;/p&gt;
+
+&lt;p&gt;The content above is the contract of &lt;a href=&#34;http://devember.org/&#34;&gt;Devember&lt;/a&gt;, a really
+interesting challenge in December.&lt;/p&gt;
+
+&lt;h1 id=&#34;detail:68a5841ae5e350aae7d7c051b365f42f&#34;&gt;Detail&lt;/h1&gt;
+
+&lt;p&gt;Wastale is a developing game inspired by
+&lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt;. This game will focus on big, various
+enemies and different kinds of weapons. I hope this game can give players
+hunting excitement but not in mission-based. There are still lots of game design
+decisions need to make. Obviously, I don&amp;rsquo;t have to worry about them now. In
+December, I will first build up the minimum windows platform layer just like
+Handmade Hero did. Then, I will implement some basic stuff for a platformer
+game.&lt;/p&gt;
+
+&lt;h1 id=&#34;goals:68a5841ae5e350aae7d7c051b365f42f&#34;&gt;Goals&lt;/h1&gt;
+
+&lt;p&gt;Therefore, following are my Devember goals.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Basic Windows platform layer&lt;/li&gt;
+&lt;li&gt;World/Map handling&lt;/li&gt;
+&lt;li&gt;Entity handling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;dj-play-the-music:68a5841ae5e350aae7d7c051b365f42f&#34;&gt;DJ! Play the music&lt;/h1&gt;
+
+&lt;p&gt;I really love the idea of Devember. Let&amp;rsquo;s start the party.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Make a professional game</title>
+      <link>http://stringbulbs.com/make-a-professional-game/</link>
+      <pubDate>Mon, 09 Nov 2015 21:51:17 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/make-a-professional-game/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://mollyrocket.com/casey/about.html&#34;&gt;Casey Muratori&lt;/a&gt; launched a brilliant
+project &lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt; last year. I still remember
+how excited I was when I watched the very first episode of Handmade Hero. After
+following 70 episodes, I start thinking what I could use from what I learned. I
+am not saying I will stop following this project or I have leaned enough from
+it. I just mean that I am the kind of person can learn more by doing. Therefore,
+I decide to make my own game.&lt;/p&gt;
+
+&lt;h1 id=&#34;why-now:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;Why now?&lt;/h1&gt;
+
+&lt;p&gt;I am a college student right now. Basically, I can say this period of time is the
+most free time in my whole life. I can learn whatever I want and do whatever I
+want. One reason why I choose computer science as my college major is my passion
+for indie games. Indie games truly rock my soul. I saw something very unique in
+them. Unlike AAA games, I can feel real &amp;ldquo;connect&amp;rdquo; between players and game
+designers. That definitely is what I want to do in the future.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-genre-will-this-game-be:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;What genre will this game be?&lt;/h1&gt;
+
+&lt;p&gt;I love puzzle games like &lt;a href=&#34;http://store.steampowered.com/app/26800/&#34;&gt;Braid&lt;/a&gt; and
+roguelike games like
+&lt;a href=&#34;http://store.steampowered.com/app/113200/&#34;&gt;The Binding of Isaac&lt;/a&gt;. As my first
+game, this game might be a 2D roguelike game. When I was a junior high school
+student, I really enjoyed the excitement of fighting huge enemies in Monster
+Hunter but sucked at the feature of collecting materials for forging weapons. In
+this game, I will get rid of the concept of collecting and focus on the weapon
+system and huge enemies. I will talk about them in the later posts.&lt;/p&gt;
+
+&lt;h1 id=&#34;goal:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;Goal&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Finish this game before I graduate.&lt;/li&gt;
+&lt;li&gt;Ship on Windows and Linux at least since I only have machines with these
+operation systems now.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;keep-going-on:d1f10fe31c342e91c05e8b9b34c96106&#34;&gt;Keep going on&lt;/h1&gt;
+
+&lt;p&gt;Actions speak louder than words. Procrastination is the horrible enemy. I will
+post something new about Wastale at least every two weeks. You have my word.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
