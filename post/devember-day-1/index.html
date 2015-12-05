@@ -5,22 +5,24 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" Make a professional game &middot;  String Bulbs" />
+  	<meta property="og:title" content=" Devember Day 1 - Basic Win32 Layer &middot;  String Bulbs" />
   	<meta property="og:site_name" content="String Bulbs" />
-  	<meta property="og:url" content="http://stringbulbs.com/make-a-professional-game/" />
+  	<meta property="og:url" content="http://stringbulbs.com/post/devember-day-1/" />
 
     
   	<meta property="og:type" content="article" />
 
-    <meta property="og:article:published_time" content="2015-11-09T21:51:17&#43;08:00" />
+    <meta property="og:article:published_time" content="2015-12-01T23:17:19&#43;08:00" />
 
+    
+    <meta property="og:article:tag" content="devember" />
     
     <meta property="og:article:tag" content="wastale" />
     
     
 
   <title>
-     Make a professional game &middot;  String Bulbs
+     Devember Day 1 - Basic Win32 Layer &middot;  String Bulbs
   </title>
 
     <meta name="description" content="" />
@@ -44,7 +46,7 @@
     
     <meta name="generator" content="Hugo 0.14" />
 
-    <link rel="canonical" href="http://stringbulbs.com/make-a-professional-game/" />
+    <link rel="canonical" href="http://stringbulbs.com/post/devember-day-1/" />
 
     
 
@@ -73,7 +75,7 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="http://stringbulbs.com/2015/11/11/the-beginning-of-tab/">Venses Tab</a>
+            	<a href="http://stringbulbs.com/the-beginning-of-tab/">Venses Tab</a>
             </li>
         
             <h3>Project</h3>
@@ -118,15 +120,17 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">Make a professional game</h1>
+        <h1 class="post-title">Devember Day 1 - Basic Win32 Layer</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2015-11-09T21:51:17&#43;08:00">
-            Nov 9, 2015
+          <time class="post-date" datetime="2015-12-01T23:17:19&#43;08:00">
+            Dec 1, 2015
           </time>
         
+         
+          <span class="post-tag small"><a href="http://stringbulbs.com/tags/devember/">#devember</a></span>
          
           <span class="post-tag small"><a href="http://stringbulbs.com/tags/wastale/">#wastale</a></span>
          
@@ -136,46 +140,61 @@
     <section class="post-content">
       
 
-<p><a href="http://mollyrocket.com/casey/about.html">Casey Muratori</a> launched a brilliant
-project <a href="http://handmadehero.org/">Handmade Hero</a> last year. I still remember
-how excited I was when I watched the very first episode of Handmade Hero. After
-following 70 episodes, I start thinking what I could use from what I learned. I
-am not saying I will stop following this project or I have leaned enough from
-it. I just mean that I am the kind of person can learn more by doing. Therefore,
-I decide to make my own game.</p>
+<p>Last week, I spent some time reviewing the construction of Win32 prototyping
+layer mentioned in Handmade Hero weeks 1 through 5. In those weeks, Casey talk
+about some basic stuff that a game need - Graphic, Sound, and Input. If you are
+interested in detail, I would recommend you to watch
+<a href="https://hero.handmadedev.org/jace/guide/">Day 1 to 25 of Handmade Hero</a>.</p>
 
-<h1 id="why-now:d1f10fe31c342e91c05e8b9b34c96106">Why now?</h1>
+<p>Most codes of <code>win32_wastale.*</code> are as same as the codes in <code>win32_handmade.*</code>.
+The most different part is the sound. I will talk about in the rest of the
+article. By the way, the source code of wastale is on
+<a href="https://github.com/wheatdog/wastale">Github</a> if you want to take a look.
+Today&rsquo;s code is on
+<a href="https://github.com/wheatdog/wastale/tree/devember_1">this tag</a>.</p>
 
-<p>I am a college student right now. Basically, I can say this period of time is the
-most free time in my whole life. I can learn whatever I want and do whatever I
-want. One reason why I choose computer science as my college major is my passion
-for indie games. Indie games truly rock my soul. I saw something very unique in
-them. Unlike AAA games, I can feel real &ldquo;connect&rdquo; between players and game
-designers. That definitely is what I want to do in the future.</p>
+<h1 id="xaudio2:38d4082b4e2ef27c7672bc7e5af08564">XAudio2</h1>
 
-<h1 id="what-genre-will-this-game-be:d1f10fe31c342e91c05e8b9b34c96106">What genre will this game be?</h1>
+<p>Instead of using DirectSound, I choose XAudio2. There is only one ring buffer in
+DirectSound. When we have reached the end of the buffer, we start from the
+beginning. However, in XAudio2, we can submit several <code>XAUDIO2_BUFFER</code> through
+<code>IXAudio2SourceVoice::SubmitSourceBuffer</code> method. Basicly, it is like a queue.
+Each time we reach the end of a buffer, it will start playing the next buffer.</p>
 
-<p>I love puzzle games like <a href="http://store.steampowered.com/app/26800/">Braid</a> and
-roguelike games like
-<a href="http://store.steampowered.com/app/113200/">The Binding of Isaac</a>. As my first
-game, this game might be a 2D roguelike game. When I was a junior high school
-student, I really enjoyed the excitement of fighting huge enemies in Monster
-Hunter but sucked at the feature of collecting materials for forging weapons. In
-this game, I will get rid of the concept of collecting and focus on the weapon
-system and huge enemies. I will talk about them in the later posts.</p>
+<p>We can reduce the audio latency by keeping the same number of samples in the
+queue. For example, Red line represent the frame boundary. Let&rsquo;s say that we run
+in 30 frames per second and have 48000 samples per second. Therefore, there are
+1600 samples per frame. Every time we write, we will make sure that the number
+of samples in the audio queue are 2400, that is the number of samples in one and
+a half frames.
+<a href="https://flic.kr/p/BgS6Lj"><img src="https://farm6.staticflickr.com/5697/23152009310_c431845d73_o.png" alt="" />
+</a>
+Brown arrow represent the time that we first write to the sound buffer, and the
+brown rounded rectangle near the black line represent the samples we write. Next
+time we update samples at the time green arrow point to. To keep the number of
+samples in the queue, we will only need to write the number of samples that
+green rounded rectangle stand for. If we can update samples in the audio buffer
+just in the middle of the frame like arrows in the image above. We can generate
+enough samples for next frame and those samples will be played right on the
+frame boundary.</p>
 
-<h1 id="goal:d1f10fe31c342e91c05e8b9b34c96106">Goal</h1>
+<p>Unfortunately, first we cannot guarantee we always update samples at the same
+time. Therefore, sound boundary may not line up with the frame boudary, which I
+think is fine. Second, <code>IXAudio2SourceVoice::GetState</code> cannot return the exactly
+samples we just played without using callback. Its granularity is 480 samples in
+my machine. That means that we might fill less sample than what we really need
+to. The worst case is that we will have the gap of 480 samples.</p>
 
-<ul>
-<li>Finish this game before I graduate.</li>
-<li>Ship on Windows and Linux at least since I only have machines with these
-operation systems now.</li>
-</ul>
+<p>The easy way to solve this problem is to make the number we want to keep in the
+queue larger. Another solution will be using callback which I am really not
+familiar with. I think the latency right now is fine for a prototyping
+layer. Therefore, I will move on to deal with other problem.</p>
 
-<h1 id="keep-going-on:d1f10fe31c342e91c05e8b9b34c96106">Keep going on</h1>
+<h1 id="tomorrow:38d4082b4e2ef27c7672bc7e5af08564">Tomorrow</h1>
 
-<p>Actions speak louder than words. Procrastination is the horrible enemy. I will
-post something new about Wastale at least every two weeks. You have my word.</p>
+<p>I will try to implement &ldquo;Live Code Editing&rdquo; feature Casey talked about in
+Handmade Hero Week 5 tomorrow. Then, maybe start game engine code exploration
+Thursday. Until then!</p>
 
     </section>
 
@@ -211,19 +230,19 @@ post something new about Wastale at least every two weeks. You have my word.</p>
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Make%20a%20professional%20game&amp;url=http%3a%2f%2fstringbulbs.com%2fmake-a-professional-game%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Devember%20Day%201%20-%20Basic%20Win32%20Layer&amp;url=http%3a%2f%2fstringbulbs.com%2fpost%2fdevember-day-1%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fstringbulbs.com%2fmake-a-professional-game%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fstringbulbs.com%2fpost%2fdevember-day-1%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fstringbulbs.com%2fmake-a-professional-game%2f&amp;description=Make%20a%20professional%20game"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fstringbulbs.com%2fpost%2fdevember-day-1%2f&amp;description=Devember%20Day%201%20-%20Basic%20Win32%20Layer"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fstringbulbs.com%2fmake-a-professional-game%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fstringbulbs.com%2fpost%2fdevember-day-1%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>

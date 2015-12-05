@@ -7,15 +7,47 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Thu, 03 Dec 2015 22:51:19 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Dec 2015 22:57:35 +0800</lastBuildDate>
     <atom:link href="http://stringbulbs.com/tags/wastale/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Devember Day 5 - Search For Postion</title>
+      <link>http://stringbulbs.com/post/devember-day-5/</link>
+      <pubDate>Sat, 05 Dec 2015 22:57:35 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/post/devember-day-5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devember Day 4 - GJK Collision Detection</title>
+      <link>http://stringbulbs.com/post/devember-day-4/</link>
+      <pubDate>Fri, 04 Dec 2015 22:57:35 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/post/devember-day-4/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_4&#34;&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I use well-known GJK algorithm. You can learn how it work via &lt;a href=&#34;http://mollyrocket.com/849&#34;&gt;Casey&amp;rsquo;s video&lt;/a&gt; and &lt;a href=&#34;http://www.dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/&#34;&gt;William Bittle&amp;rsquo;s post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is what it looks like.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/fJ4s7RO.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Really cool, right?&lt;/p&gt;
+
+&lt;p&gt;Tomorrow, I will make entity truly collide with another entity. Until then.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Devember Day 3 - Basic MultiPlayer Movement</title>
-      <link>http://stringbulbs.com/devember-day-3---basic-multiplayer-movement/</link>
+      <link>http://stringbulbs.com/post/devember-day-3/</link>
       <pubDate>Thu, 03 Dec 2015 22:51:19 +0800</pubDate>
       
-      <guid>http://stringbulbs.com/devember-day-3---basic-multiplayer-movement/</guid>
+      <guid>http://stringbulbs.com/post/devember-day-3/</guid>
       <description>&lt;p&gt;Today&amp;rsquo;s code is on
 &lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_3&#34;&gt;this tag&lt;/a&gt;. The complete
 code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -49,10 +81,10 @@ Now, we have multiplayer.&lt;/p&gt;
     
     <item>
       <title>Devember Day 2 - Live Code Editing</title>
-      <link>http://stringbulbs.com/devember-day-2---live-code-editing/</link>
+      <link>http://stringbulbs.com/post/devember-day-2/</link>
       <pubDate>Wed, 02 Dec 2015 22:47:18 +0800</pubDate>
       
-      <guid>http://stringbulbs.com/devember-day-2---live-code-editing/</guid>
+      <guid>http://stringbulbs.com/post/devember-day-2/</guid>
       <description>&lt;p&gt;Today&amp;rsquo;s code is on
 &lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_2&#34;&gt;this tag&lt;/a&gt;. The complete
 code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -73,10 +105,10 @@ screen. Tomorrow, I will start doing some game code. Until then.&lt;/p&gt;
     
     <item>
       <title>Devember Day 1 - Basic Win32 Layer</title>
-      <link>http://stringbulbs.com/devember-day-1---basic-win32-layer/</link>
+      <link>http://stringbulbs.com/post/devember-day-1/</link>
       <pubDate>Tue, 01 Dec 2015 23:17:19 +0800</pubDate>
       
-      <guid>http://stringbulbs.com/devember-day-1---basic-win32-layer/</guid>
+      <guid>http://stringbulbs.com/post/devember-day-1/</guid>
       <description>
 
 &lt;p&gt;Last week, I spent some time reviewing the construction of Win32 prototyping
@@ -139,10 +171,10 @@ Thursday. Until then!&lt;/p&gt;
     
     <item>
       <title>The Devember challenge</title>
-      <link>http://stringbulbs.com/post-title/</link>
+      <link>http://stringbulbs.com/post/devember-challenge/</link>
       <pubDate>Sat, 14 Nov 2015 13:40:04 +0800</pubDate>
       
-      <guid>http://stringbulbs.com/post-title/</guid>
+      <guid>http://stringbulbs.com/post/devember-challenge/</guid>
       <description>
 
 &lt;p&gt;I, Tim Liou, will participate to the next Devember. My Devember will be
@@ -183,10 +215,10 @@ game.&lt;/p&gt;
     
     <item>
       <title>Make a professional game</title>
-      <link>http://stringbulbs.com/make-a-professional-game/</link>
+      <link>http://stringbulbs.com/post/make-a-professional-game/</link>
       <pubDate>Mon, 09 Nov 2015 21:51:17 +0800</pubDate>
       
-      <guid>http://stringbulbs.com/make-a-professional-game/</guid>
+      <guid>http://stringbulbs.com/post/make-a-professional-game/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://mollyrocket.com/casey/about.html&#34;&gt;Casey Muratori&lt;/a&gt; launched a brilliant
