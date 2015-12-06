@@ -29,6 +29,9 @@ In video, Casey mention two method - &amp;ldquo;Search in P&amp;rdquo; and &amp;
 
 &lt;p&gt;I choose &amp;ldquo;Search in T&amp;rdquo; with a bound number of iteration for now.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/3TI4A8R.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
 &lt;p&gt;The way I clip the entity movement contain two steps:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -38,8 +41,15 @@ rectangle and transform the movable rectangle to a point.&lt;/li&gt;
 side of the Minkowski sum rectangle.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;There is a TODO here, make all this collision routine support different shapes.
-I will not deal with this issue until I make the real game engine. That&amp;rsquo;s it!&lt;/p&gt;
+&lt;p&gt;There are some TODOs here,&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Make the collision routine support different shapes. I will not deal with
+this issue until I make the real game engine.&lt;/li&gt;
+&lt;li&gt;Something strange when two movable entity collide. I will take a look tomorrow.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
 </description>
     </item>
     
