@@ -11,12 +11,36 @@
     <atom:link href="http://stringbulbs.com/tags/wastale/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Devember Day 5 - Search For Postion</title>
+      <title>Devember Day 5 - Collision Movement Search</title>
       <link>http://stringbulbs.com/post/devember-day-5/</link>
       <pubDate>Sat, 05 Dec 2015 22:57:35 +0800</pubDate>
       
       <guid>http://stringbulbs.com/post/devember-day-5/</guid>
-      <description></description>
+      <description>&lt;p&gt;Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_5&#34;&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Yesterday, I implement the GJK algorithm to determine whether two rectangle are
+overlapped or not. With this property, we can figure out which entities will
+collide in this frame. If it does collide, &amp;ldquo;Collision Movement Search&amp;rdquo; will help
+us find the right place to put the entity. You can learn a lot from
+&lt;a href=&#34;https://hero.handmadedev.org/videos/game-architecture/day045.html&#34;&gt;Geometric vs. Temporal Movement Search&lt;/a&gt;.
+In video, Casey mention two method - &amp;ldquo;Search in P&amp;rdquo; and &amp;ldquo;Search in T&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;I choose &amp;ldquo;Search in T&amp;rdquo; with a bound number of iteration for now.&lt;/p&gt;
+
+&lt;p&gt;The way I clip the entity movement contain two steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Transform fixed rectangle to the Minkowski sum of it and the movable
+rectangle and transform the movable rectangle to a point.&lt;/li&gt;
+&lt;li&gt;Test the line segments form by the point and the direction of motion with the
+side of the Minkowski sum rectangle.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There is a TODO here, make all this collision routine support different shapes.
+I will not deal with this issue until I make the real game engine. That&amp;rsquo;s it!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -29,16 +53,35 @@
 &lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_4&#34;&gt;this tag&lt;/a&gt;. The complete
 code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I use well-known GJK algorithm. You can learn how it work via &lt;a href=&#34;http://mollyrocket.com/849&#34;&gt;Casey&amp;rsquo;s video&lt;/a&gt; and &lt;a href=&#34;http://www.dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/&#34;&gt;William Bittle&amp;rsquo;s post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yesterday, I use &lt;code&gt;player_info&lt;/code&gt; to deal with multiplayer problem. Today, I
+spend a while thinking more harder. I realize that it may be a good time to
+bring the concept of &lt;code&gt;entity&lt;/code&gt; into the code.&lt;/p&gt;
 
-&lt;p&gt;Here is what it looks like.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;struct entity
+{
+    b32 Exist;
+    entity_type Type;
+    v2 ddP;
+    v2 dP;
+    v2 P;
+    v2 WidthHeight;
+    b32 Collide;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Following is about collision detection. I use well-known GJK algorithm. You can
+learn how it work via &lt;a href=&#34;http://mollyrocket.com/849&#34;&gt;Casey&amp;rsquo;s video&lt;/a&gt; and
+&lt;a href=&#34;http://www.dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/&#34;&gt;William Bittle&amp;rsquo;s post&lt;/a&gt;.
+I might write a separate post to explan GJK in chinese.&lt;/p&gt;
+
+&lt;p&gt;Anyway, here is what it looks like.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://i.imgur.com/fJ4s7RO.gif&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Really cool, right?&lt;/p&gt;
 
-&lt;p&gt;Tomorrow, I will make entity truly collide with another entity. Until then.&lt;/p&gt;
+&lt;p&gt;Tomorrow, I will make entities truly collide with each others. Until then.&lt;/p&gt;
 </description>
     </item>
     

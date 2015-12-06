@@ -142,16 +142,35 @@
 <a href="https://github.com/wheatdog/wastale/tree/devember_4">this tag</a>. The complete
 code can be found in <a href="https://github.com/wheatdog/wastale">here</a>.</p>
 
-<p>I use well-known GJK algorithm. You can learn how it work via <a href="http://mollyrocket.com/849">Casey&rsquo;s video</a> and <a href="http://www.dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/">William Bittle&rsquo;s post</a>.</p>
+<p>Yesterday, I use <code>player_info</code> to deal with multiplayer problem. Today, I
+spend a while thinking more harder. I realize that it may be a good time to
+bring the concept of <code>entity</code> into the code.</p>
 
-<p>Here is what it looks like.</p>
+<pre><code>struct entity
+{
+    b32 Exist;
+    entity_type Type;
+    v2 ddP;
+    v2 dP;
+    v2 P;
+    v2 WidthHeight;
+    b32 Collide;
+};
+</code></pre>
+
+<p>Following is about collision detection. I use well-known GJK algorithm. You can
+learn how it work via <a href="http://mollyrocket.com/849">Casey&rsquo;s video</a> and
+<a href="http://www.dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/">William Bittle&rsquo;s post</a>.
+I might write a separate post to explan GJK in chinese.</p>
+
+<p>Anyway, here is what it looks like.</p>
 
 <p><img src="http://i.imgur.com/fJ4s7RO.gif" alt="" />
 </p>
 
 <p>Really cool, right?</p>
 
-<p>Tomorrow, I will make entity truly collide with another entity. Until then.</p>
+<p>Tomorrow, I will make entities truly collide with each others. Until then.</p>
 
     </section>
 
