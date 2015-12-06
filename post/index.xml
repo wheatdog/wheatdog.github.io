@@ -20,9 +20,9 @@
 &lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_5&#34;&gt;this tag&lt;/a&gt;. The complete
 code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Yesterday, I implement the GJK algorithm to determine whether two rectangle are
+&lt;p&gt;Yesterday, I implement the GJK algorithm to determine whether two rectangles are
 overlapped or not. With this property, we can figure out which entities will
-collide in this frame. If it does collide, &amp;ldquo;Collision Movement Search&amp;rdquo; will help
+collide in this frame. If they does collide, &amp;ldquo;Collision Movement Search&amp;rdquo; will help
 us find the right place to put the entity. You can learn a lot from
 &lt;a href=&#34;https://hero.handmadedev.org/videos/game-architecture/day045.html&#34;&gt;Geometric vs. Temporal Movement Search&lt;/a&gt;.
 In video, Casey mention two method - &amp;ldquo;Search in P&amp;rdquo; and &amp;ldquo;Search in T&amp;rdquo;.&lt;/p&gt;
