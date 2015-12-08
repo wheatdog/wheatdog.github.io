@@ -7,8 +7,40 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Sat, 05 Dec 2015 22:57:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Dec 2015 20:36:05 +0800</lastBuildDate>
     <atom:link href="http://stringbulbs.com/tags/wastale/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Devember Day 6 - Input Playback</title>
+      <link>http://stringbulbs.com/post/devember-6/</link>
+      <pubDate>Tue, 08 Dec 2015 20:36:05 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/post/devember-6/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_6&#34;&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I think it is about time to implement &amp;ldquo;Input Playback&amp;rdquo; feature. For now, the
+maximum minutes of input I can record is about one hour, which I think is fine
+now.&lt;/p&gt;
+
+&lt;p&gt;I figure out the stuck problem. If you are interested, you can check out
+&lt;a href=&#34;https://github.com/wheatdog/wastale/commit/f3411f9170ce00ec7d8393b53594d0f10dedc4d1&#34;&gt;this commit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There is another problem I think is about floating point precision.&lt;/p&gt;
+
+&lt;p&gt;When one player is on the other player and the player beneath press the up botton
+and release it, it will sunk into the ground.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/VHhvWA2.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I sort of know there is something wrong in &lt;code&gt;ClipDimToValide&lt;/code&gt;, especially the
+value of &lt;code&gt;Theta&lt;/code&gt;, but I am not sure how I want to handle it. Maybe I should
+watch Week 16 of Handmade Hero, or I could leave it until I wrote the engine
+version of collision detection. Let me think about it&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Devember Day 5 - Collision Movement Search</title>
@@ -36,9 +68,10 @@ In video, Casey mention two method - &amp;ldquo;Search in P&amp;rdquo; and &amp;
 
 &lt;ol&gt;
 &lt;li&gt;Transform fixed rectangle to the Minkowski sum of it and the movable
-rectangle and transform the movable rectangle to a point.&lt;/li&gt;
-&lt;li&gt;Test the line segments form by the point and the direction of motion with the
-side of the Minkowski sum rectangle.&lt;/li&gt;
+rectangle. And then transform the movable rectangle to a point.&lt;/li&gt;
+&lt;li&gt;Find the intersection point of the line segment, whose start point is the
+point we just created and the direction is as same as the motion&amp;rsquo;s, and the
+sides of Minkowski sum rectangle.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;There are some TODOs here,&lt;/p&gt;
