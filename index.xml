@@ -7,8 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Tue, 08 Dec 2015 20:36:05 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Dec 2015 23:31:15 +0800</lastBuildDate>
     <atom:link href="http://stringbulbs.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Devember Day 7 - Think about the rope</title>
+      <link>http://stringbulbs.com/post/devember-7/</link>
+      <pubDate>Wed, 09 Dec 2015 23:31:15 +0800</pubDate>
+      
+      <guid>http://stringbulbs.com/post/devember-7/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s code is on
+&lt;a href=&#34;https://github.com/wheatdog/wastale/tree/devember_7&#34;&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href=&#34;https://github.com/wheatdog/wastale&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, I fixed the &lt;code&gt;Theta&lt;/code&gt; problem mentioned yesterday.&lt;/p&gt;
+
+&lt;p&gt;After that, I thought about what I want to do to handle entities like ropes.
+First thing came into my mind is Z layer. I thought a little deeply about this
+method: entities basicly don&amp;rsquo;t have length in z dimension, so we can use index
+to mark the layer entity in. We can use z to determine whether collision will
+happen. However, for those entities like ropes, the collision must happen no
+matter which layer entity stay. That kind of entities can transform other
+entities to other layers. Anyway, I will try to implement those kind of entities
+tomorrow. See you!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Devember Day 6 - Input Playback</title>
