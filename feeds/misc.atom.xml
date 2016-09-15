@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>String Bulbs</title><link href="http://stringbulbs.com/" rel="alternate"></link><link href="http://stringbulbs.com/feeds/misc.atom.xml" rel="self"></link><id>http://stringbulbs.com/</id><updated>2015-12-08T00:00:00+08:00</updated><entry><title>Devember Day 6 - Input Playback</title><link href="http://stringbulbs.com/devember-day-6-input-playback.html" rel="alternate"></link><published>2015-12-08T00:00:00+08:00</published><updated>2015-12-08T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-12-08:devember-day-6-input-playback.html</id><summary type="html">&lt;p&gt;Today's code is on
+&lt;a href="https://github.com/wheatdog/wastale/tree/devember_6"&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href="https://github.com/wheatdog/wastale"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I think it is about time to implement "Input Playback" feature. For now, the
+maximum minutes of input I can record is about one hour, which I think is fine
+now.&lt;/p&gt;
+&lt;p&gt;I figure out the stuck problem. If you are interested, you can check out
+&lt;a href="https://github.com/wheatdog/wastale/commit/f3411f9170ce00ec7d8393b53594d0f10dedc4d1"&gt;this commit&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is another problem I think is about floating point precision.&lt;/p&gt;
+&lt;p&gt;When one player is on the other player and the player beneath press the up botton
+and release it, it will sunk into the ground.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/VHhvWA2.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;I sort of know there is something wrong in &lt;code&gt;ClipDimToValide&lt;/code&gt;, especially the
+value of &lt;code&gt;Theta&lt;/code&gt;, but I am not sure how I want to handle it. Maybe I should
+watch Week 16 of Handmade Hero, or I could leave it until I wrote the engine
+version of collision detection. Let me think about it...&lt;/p&gt;</summary></entry><entry><title>Devember Day 5 - Collision Movement Search</title><link href="http://stringbulbs.com/devember-day-5-collision-movement-search.html" rel="alternate"></link><published>2015-12-05T00:00:00+08:00</published><updated>2015-12-05T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-12-05:devember-day-5-collision-movement-search.html</id><summary type="html">&lt;p&gt;Today's code is on
+&lt;a href="https://github.com/wheatdog/wastale/tree/devember_5"&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href="https://github.com/wheatdog/wastale"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yesterday, I implement the GJK algorithm to determine whether two rectangles are
+overlapped or not. With this property, we can figure out which entities will
+collide in this frame. If they does collide, "Collision Movement Search" will help
+us find the right place to put the entity. You can learn a lot from
+&lt;a href="https://hero.handmadedev.org/videos/game-architecture/day045.html"&gt;Geometric vs. Temporal Movement Search&lt;/a&gt;.
+In video, Casey mention two method - "Search in P" and "Search in T".&lt;/p&gt;
+&lt;p&gt;I choose "Search in T" with a bound number of iteration for now.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/3TI4A8R.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;The way I clip the entity movement contain two steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Transform fixed rectangle to the Minkowski sum of it and the movable
+   rectangle. And then transform the movable rectangle to a point.&lt;/li&gt;
+&lt;li&gt;Find the intersection point of the line segment, whose start point is the
+   point we just created and the direction is as same as the motion's, and the
+   sides of Minkowski sum rectangle.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There are some TODOs here,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make the collision routine support different shapes. I will not deal with
+   this issue until I make the real game engine.&lt;/li&gt;
+&lt;li&gt;Something strange when two movable entity collide. I will take a look tomorrow.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That's it!&lt;/p&gt;</summary></entry><entry><title>Devember Day 4 - GJK Collision Detection</title><link href="http://stringbulbs.com/devember-day-4-gjk-collision-detection.html" rel="alternate"></link><published>2015-12-04T00:00:00+08:00</published><updated>2015-12-04T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-12-04:devember-day-4-gjk-collision-detection.html</id><summary type="html">&lt;p&gt;Today's code is on
+&lt;a href="https://github.com/wheatdog/wastale/tree/devember_4"&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href="https://github.com/wheatdog/wastale"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yesterday, I use &lt;code&gt;player_info&lt;/code&gt; to deal with multiplayer problem. Today, I
+spend a while thinking more harder. I realize that it may be a good time to
+bring the concept of &lt;code&gt;entity&lt;/code&gt; into the code.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;entity&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;b32&lt;/span&gt; &lt;span class="n"&gt;Exist&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;entity_type&lt;/span&gt; &lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;ddP&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;dP&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;WidthHeight&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;b32&lt;/span&gt; &lt;span class="n"&gt;Collide&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Following is about collision detection. I use well-known GJK algorithm. You can
+learn how it work via &lt;a href="http://mollyrocket.com/849"&gt;Casey's video&lt;/a&gt; and
+&lt;a href="http://www.dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/"&gt;William Bittle's post&lt;/a&gt;.
+I might write a separate post to explan GJK in chinese.&lt;/p&gt;
+&lt;p&gt;Anyway, here is what it looks like.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/fJ4s7RO.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;Really cool, right?&lt;/p&gt;
+&lt;p&gt;Tomorrow, I will make entities truly collide with each others. Until then.&lt;/p&gt;</summary></entry><entry><title>Devember Day 3 - Basic MultiPlayer Movement</title><link href="http://stringbulbs.com/devember-day-3-basic-multiplayer-movement.html" rel="alternate"></link><published>2015-12-03T00:00:00+08:00</published><updated>2015-12-03T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-12-03:devember-day-3-basic-multiplayer-movement.html</id><summary type="html">&lt;p&gt;Today's code is on
+&lt;a href="https://github.com/wheatdog/wastale/tree/devember_3"&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href="https://github.com/wheatdog/wastale"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;First, Let's draw some rectangle on the screen. You can check out &lt;code&gt;DrawRect&lt;/code&gt;
+function. Be careful that the coordinates of angles in the rectangle might sit
+outside of the screen. This might cause to memory access violation.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/Q2K2vRs.gif?1" /&gt;&lt;/p&gt;
+&lt;p&gt;Then, it is about physic of motion.
+&lt;img alt="v = v_0 + at" src="https://latex.codecogs.com/gif.latex?v&amp;amp;space;=&amp;amp;space;v_0&amp;amp;space;&amp;amp;plus;&amp;amp;space;at" /&gt;
+&lt;img alt="x = x_0 + v_0t + \frac{1}{2}at" src="https://latex.codecogs.com/gif.latex?x&amp;amp;space;=&amp;amp;space;x_0&amp;amp;space;&amp;amp;plus;&amp;amp;space;v_0t&amp;amp;space;&amp;amp;plus;&amp;amp;space;0.5at" /&gt;
+Also, change the unit from pixel to meter. You can feel that motion is much better.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mOQgHIO.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;Each entry of &lt;code&gt;player_info&lt;/code&gt; struct array store the information of each player.
+Now, we have multiplayer.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/m7jKV9f.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;See you tomorrow!&lt;/p&gt;</summary></entry><entry><title>Devember Day 2 - Live Code Editing</title><link href="http://stringbulbs.com/devember-day-2-live-code-editing.html" rel="alternate"></link><published>2015-12-02T00:00:00+08:00</published><updated>2015-12-02T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-12-02:devember-day-2-live-code-editing.html</id><summary type="html">&lt;p&gt;Today's code is on
+&lt;a href="https://github.com/wheatdog/wastale/tree/devember_2"&gt;this tag&lt;/a&gt;. The complete
+code can be found in &lt;a href="https://github.com/wheatdog/wastale"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The most coolest thing I did today is "Live Code Editing" that Casey mentioned
+in Handmade Hero week 5. The basic idea is to make platform independent code be
+another translation unit, and compile it to a DLL. Then, we can dynamically load
+it in the Win32 platform code. By doing so, we can change our game code without
+reopening the executable file at some point.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/8EWjY6u.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;I might implement the "Loop editing" feature after I got some entities on the
+screen. Tomorrow, I will start doing some game code. Until then.&lt;/p&gt;</summary></entry><entry><title>Devember Day 1 - Basic Win32 Layer</title><link href="http://stringbulbs.com/devember-day-1-basic-win32-layer.html" rel="alternate"></link><published>2015-12-01T00:00:00+08:00</published><updated>2015-12-01T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-12-01:devember-day-1-basic-win32-layer.html</id><summary type="html">&lt;p&gt;Last week, I spent some time reviewing the construction of Win32 prototyping
+layer mentioned in Handmade Hero weeks 1 through 5. In those weeks, Casey talk
+about some basic stuff that a game need - Graphic, Sound, and Input. If you are
+interested in detail, I would recommend you to watch
+&lt;a href="https://hero.handmadedev.org/jace/guide/"&gt;Day 1 to 25 of Handmade Hero&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Most codes of &lt;code&gt;win32_wastale.*&lt;/code&gt; are as same as the codes in &lt;code&gt;win32_handmade.*&lt;/code&gt;.
+The most different part is the sound. I will talk about in the rest of the
+article. By the way, the source code of wastale is on
+&lt;a href="https://github.com/wheatdog/wastale"&gt;Github&lt;/a&gt; if you want to take a look.
+Today's code is on
+&lt;a href="https://github.com/wheatdog/wastale/tree/devember_1"&gt;this tag&lt;/a&gt;.&lt;/p&gt;
+&lt;h1&gt;XAudio2&lt;/h1&gt;
+&lt;p&gt;Instead of using DirectSound, I choose XAudio2. There is only one ring buffer in
+DirectSound. When we have reached the end of the buffer, we start from the
+beginning. However, in XAudio2, we can submit several &lt;code&gt;XAUDIO2_BUFFER&lt;/code&gt; through
+&lt;code&gt;IXAudio2SourceVoice::SubmitSourceBuffer&lt;/code&gt; method. Basicly, it is like a queue.
+Each time we reach the end of a buffer, it will start playing the next buffer.&lt;/p&gt;
+&lt;p&gt;We can reduce the audio latency by keeping the same number of samples in the
+queue. For example, Red line represent the frame boundary. Let's say that we run
+in 30 frames per second and have 48000 samples per second. Therefore, there are
+1600 samples per frame. Every time we write, we will make sure that the number
+of samples in the audio queue are 2400, that is the number of samples in one and
+a half frames.
+&lt;a href="https://flic.kr/p/BgS6Lj"&gt;&lt;img alt="" src="https://farm6.staticflickr.com/5697/23152009310_c431845d73_o.png" /&gt;&lt;/a&gt;
+Brown arrow represent the time that we first write to the sound buffer, and the
+brown rounded rectangle near the black line represent the samples we write. Next
+time we update samples at the time green arrow point to. To keep the number of
+samples in the queue, we will only need to write the number of samples that
+green rounded rectangle stand for. If we can update samples in the audio buffer
+just in the middle of the frame like arrows in the image above. We can generate
+enough samples for next frame and those samples will be played right on the
+frame boundary.&lt;/p&gt;
+&lt;p&gt;Unfortunately, first we cannot guarantee we always update samples at the same
+time. Therefore, sound boundary may not line up with the frame boudary, which I
+think is fine. Second, &lt;code&gt;IXAudio2SourceVoice::GetState&lt;/code&gt; cannot return the exactly
+samples we just played without using callback. Its granularity is 480 samples in
+my machine. That means that we might fill less sample than what we really need
+to. The worst case is that we will have the gap of 480 samples.&lt;/p&gt;
+&lt;p&gt;The easy way to solve this problem is to make the number we want to keep in the
+queue larger. Another solution will be using callback which I am really not
+familiar with. I think the latency right now is fine for a prototyping
+layer. Therefore, I will move on to deal with other problem.&lt;/p&gt;
+&lt;h1&gt;Tomorrow&lt;/h1&gt;
+&lt;p&gt;I will try to implement "Live Code Editing" feature Casey talked about in
+Handmade Hero Week 5 tomorrow. Then, maybe start game engine code exploration
+Thursday. Until then!&lt;/p&gt;</summary></entry><entry><title>The Devember challenge</title><link href="http://stringbulbs.com/the-devember-challenge.html" rel="alternate"></link><published>2015-11-14T00:00:00+08:00</published><updated>2015-11-14T00:00:00+08:00</updated><author><name>Tim Liou</name></author><id>tag:stringbulbs.com,2015-11-14:the-devember-challenge.html</id><summary type="html">&lt;p&gt;I, Tim Liou, will participate to the next Devember. My Devember will be
+programming a part of Wastale, a game project. I promise I will program for my
+Devember for at least an hour, every day of the next December. I will also write
+a daily public devlog and will make the produced code publicly available on the
+internet. No matter what, I will keep my promise.&lt;/p&gt;
+&lt;p&gt;The content above is the contract of &lt;a href="http://devember.org/"&gt;Devember&lt;/a&gt;, a really
+interesting challenge in December.&lt;/p&gt;
+&lt;h1&gt;Detail&lt;/h1&gt;
+&lt;p&gt;Wastale is a developing game inspired by
+&lt;a href="http://handmadehero.org/"&gt;Handmade Hero&lt;/a&gt;. This game will focus on big, various
+enemies and different kinds of weapons. I hope this game can give players
+hunting excitement but not in mission-based. There are still lots of game design
+decisions need to make. Obviously, I don't have to worry about them now. In
+December, I will first build up the minimum windows platform layer just like
+Handmade Hero did. Then, I will implement some basic stuff for a platformer
+game.&lt;/p&gt;
+&lt;h1&gt;Goals&lt;/h1&gt;
+&lt;p&gt;Therefore, following are my Devember goals.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic Windows platform layer&lt;/li&gt;
+&lt;li&gt;World/Map handling&lt;/li&gt;
+&lt;li&gt;Entity handling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;DJ! Play the music&lt;/h1&gt;
+&lt;p&gt;I really love the idea of Devember. Let's start the party.&lt;/p&gt;</summary></entry><entry><title>The beginning of Tab</title><link href="http://stringbulbs.com/the-beginning-of-tab.html" rel="alternate"></link><published>2015-11-11T00:00:00+08:00</published><updated>2015-11-11T00:00:00+08:00</updated><author><name>Venses Tab</name></author><id>tag:stringbulbs.com,2015-11-11:the-beginning-of-tab.html</id><summary type="html">&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Hi, this is Venses Tab. When I was in junior high school, I started listening
+electronic music. At that time, I quite enjoyed the music taking me floating
+above mind sea. My mp3 was used to load lots of industrial-loud electronic noise,
+you should wonder that why a boy had this strange passion on such noise in his
+early life. You know what, because the beats are truly epic! Until now, I still
+love plugging earphone, wandering in digital labyrinth.&lt;/p&gt;
+&lt;h1&gt;Play around&lt;/h1&gt;
+&lt;p&gt;In the beginning of my college's life, I ask myself, "How about I compose my own
+music?". Thanks to the prosperity of clubs in my college, there is a club
+teaching me composing digital music using
+&lt;a href="https://en.wikipedia.org/wiki/Ableton-Live"&gt;Ableton Live&lt;/a&gt;, and also I learn
+some DJ skills. When time goes on, the laziness of attitude and loads of
+assignment let me often get tired of practicing.&lt;/p&gt;
+&lt;h1&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;Luckily, Tim and I found Stringbulbs. We have lots of memories of thinking game
+ideas when we were little. This time, in November, we launch a new project for
+our first game. In this team, Tim is as programmer, and I am as soundtrack
+producer, maybe sometimes help Tim program a little bit, ugh..., all I want to
+say is I hope this work can motivate me to find my lost passion about music
+composition.&lt;/p&gt;
+&lt;h1&gt;Goal?&lt;/h1&gt;
+&lt;p&gt;Before 2015 ends, I promise I will finish a set for DJ performance and one
+experimental music soundtrack. Also, in leisure time, I will post some my
+opinion and thought about music and project here, hope you guys have a nice
+day!&lt;/p&gt;</summary></entry></feed>
